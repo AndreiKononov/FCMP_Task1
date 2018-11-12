@@ -21,7 +21,7 @@ fetch(req)
       worldEvent.href = response.articles[i].url;
       worldEvent.target = '_blank';
       worldEvent.innerHTML = `
-        <span >${response.articles[i].author} / ${response.articles[i].publishedAt}</span> 
+        <span>${response.articles[i].source.name} / ${response.articles[i].publishedAt}</span> 
         <h1 class="news-title">${response.articles[i].title}</h1>
         <p>${response.articles[i].description}</p>
         <img src="${response.articles[i].urlToImage}" alt="${response.articles[i].title}">
