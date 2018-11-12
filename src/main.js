@@ -1,18 +1,14 @@
 'use strict';
 
 const API_KEY = 'e9979803c3894fa182b399c482279297';
-const HOST_URL = 'https://newsapi.org/v2';
-const SOURCES_PARAM = '/top-headlines';
+const HOST_URL = 'https://newsapi.org/v2/';
+const SOURCES_PARAM = 'top-headlines';
 const url = `${HOST_URL}${SOURCES_PARAM}?country=us&apiKey=${API_KEY}`;
 const req = new Request(url);
 const container = document.getElementById('container');
 
 fetch(req)
-  //.then(response => response.json()).then(myJson => console.log(JSON.stringify(myJson)))
-  .then(response => {
-    console.log(response.status);
-    return response.json();
-  })
+  .then(response => response.json())
   .then(response => {
     console.log(response);
     for(let i = 0; i < response.articles.length; i++ ){
@@ -29,6 +25,4 @@ fetch(req)
       container.appendChild(worldEvent);
     }
   })
-  .catch(error => {
-    console.log(error)
-  });
+  .catch(error => console.log(error));
