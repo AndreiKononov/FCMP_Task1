@@ -9,6 +9,9 @@ const container = document.getElementById('container');
 const fragment = document.createDocumentFragment();
 const getRandomIntNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const getRandomImageUrl = () => `./src/img/news-${getRandomIntNumber(1, 3)}.jpg`;
+const loader = document.getElementById("loader");
+
+window.onload = () => loader.style.display = "none";
 
 fetch(req)
   .then(response => response.json())
