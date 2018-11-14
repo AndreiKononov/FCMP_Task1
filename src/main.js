@@ -6,6 +6,7 @@ const SOURCES_PARAM = 'top-headlines';
 const url = `${HOST_URL}${SOURCES_PARAM}?country=us&apiKey=${API_KEY}`;
 const req = new Request(url);
 const container = document.getElementById('container');
+const fragment = document.createDocumentFragment();
 
 fetch(req)
   .then(response => response.json())
@@ -21,7 +22,8 @@ fetch(req)
         <p>${article.description}</p>
         <img src="${article.urlToImage}" alt="${article.title}">
       `;
-      container.appendChild(dataItemEl);
-    })
+      fragment.appendChild(dataItemEl);
+    });
+    container.appendChild(fragment);
   })
   .catch(error => console.log(error));
