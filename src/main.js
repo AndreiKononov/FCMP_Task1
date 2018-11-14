@@ -10,19 +10,18 @@ const container = document.getElementById('container');
 fetch(req)
   .then(response => response.json())
   .then(response => {
-    console.log(response);
     for(let i = 0; i < response.articles.length; i++ ){
-      let worldEvent = document.createElement('a');
-      worldEvent.className = 'world-news';
-      worldEvent.href = response.articles[i].url;
-      worldEvent.target = '_blank';
-      worldEvent.innerHTML = `
+      let dataItemEl = document.createElement('article');
+      dataItemEl.className = 'item';
+      dataItemEl.innerHTML = `
         <span>${response.articles[i].source.name} / ${response.articles[i].publishedAt}</span> 
-        <h1 class="news-title">${response.articles[i].title}</h1>
+        <header>
+          <h1><a class="item-title" target="_blank" href="${response.articles[i].url}">${response.articles[i].title}</a></h1>
+        </header>        
         <p>${response.articles[i].description}</p>
         <img src="${response.articles[i].urlToImage}" alt="${response.articles[i].title}">
       `;
-      container.appendChild(worldEvent);
+      container.appendChild(dataItemEl);
     }
   })
   .catch(error => console.log(error));

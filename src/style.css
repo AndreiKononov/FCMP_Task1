@@ -21,7 +21,7 @@
   flex-wrap: wrap;
   margin: 0 auto;
 }
-.world-news {
+.item {
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: 40%;
@@ -30,22 +30,22 @@
   margin: 10px;
   padding: 15px;
   box-sizing: border-box;
-  text-decoration: none;
   color: #333;
 }
-.world-news:hover {
-  border: 1px solid #000;
+.item:hover {
+  border: 1px solid blue;
 }
-.world-news:hover .news-title {
-  text-decoration: underline;
+.item:hover p {
   color: #000;
 }
-.world-news:hover p {
-  color: #000;
-}
-.news-title {
+.item-title {
+  text-decoration: none;
   font-family: 'Playfair Display', serif;
   color: #333;
+}
+.item-title:hover {
+  text-decoration: underline;
+  color: #000;
 }
 p {
   font-family: 'Raleway', sans-serif;
