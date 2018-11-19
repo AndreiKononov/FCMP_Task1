@@ -1,0 +1,25 @@
+{
+  "name": "frontcamp",
+  "version": "1.0.0",
+  "description": "Task 1: ES6 Features",
+  "main": "main.js",
+  "scripts": {
+    "build": "babel ./src/js --out-dir ./dist/js",
+    "watch": "babel ./src/js --watch --out-dir ./dist/js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreiKononov/FrontCamp.git"
+  },
+  "author": "Andrei Kononov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndreiKononov/FrontCamp/issues"
+  },
+  "homepage": "https://github.com/AndreiKononov/FrontCamp#readme",
+  "devDependencies": {
+    "@babel/cli": "7.1.5",
+    "@babel/core": "7.1.6",
+    "@babel/preset-env": "7.1.6"
+  }
+}
