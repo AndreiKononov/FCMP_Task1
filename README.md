@@ -1,3 +1,1 @@
-#FrontCamp
-
-####Task 1: ES6 Features
+To see news click here https://andreikononov.github.io/FrontCamp/
