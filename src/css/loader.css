@@ -25,7 +25,7 @@
   box-shadow: 0 0 35px #2187e7;
   width: 50px;
   height: 50px;
-  -moz-animation: spinPulse 1s infinite ease-in-out;
+  animation: spinPulse 1s infinite linear;
   -webkit-animation: spinPulse 1s infinite linear;
   margin: -25px 0 0 -25px;
   position: absolute;
@@ -43,12 +43,15 @@
   box-shadow: 0 0 15px #2187e7;
   width: 30px;
   height: 30px;
-  -moz-animation: spinoffPulse 1s infinite linear;
+  animation: spinoffPulse 1s infinite linear;
   -webkit-animation: spinoffPulse 1s infinite linear;
   margin: -15px 0 0 -15px;
   position: absolute;
   top: 50%;
   left: 50%;
+}
+.hidden {
+  display: none;
 }
 
 @-webkit-keyframes spinPulse {
@@ -69,4 +72,27 @@
     -webkit-transform: rotate(0deg); }
   100% {
     -webkit-transform: rotate(360deg); }
+}
+@keyframes spinPulse {
+  0% {
+    transform:rotate(160deg);
+    opacity: 0;
+    box-shadow: 0 0 1px #2187e7;
+  }
+  50% {
+    transform: rotate(145deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(-320deg);
+    opacity: 0;
+  }
+}
+@keyframes spinoffPulse {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
