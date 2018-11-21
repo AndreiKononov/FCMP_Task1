@@ -23,7 +23,7 @@
         <header>
           <h1><a class="item-title" target="_blank" href="${article.url}">${article.title}</a></h1>
         </header>        
-        <p>${article.description ? article.description : 'Unfortunately, description of news.js not provided.'}</p>
+        <p>${article.description ? article.description : 'Unfortunately, description of news not provided.'}</p>
         <img src="${article.urlToImage}" alt="${article.title}">
       `;
         fragment.appendChild(dataItemEl);

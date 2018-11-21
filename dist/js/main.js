@@ -18,7 +18,7 @@
 
       var dataItemEl = document.createElement('article');
       dataItemEl.className = 'item';
-      dataItemEl.innerHTML = "\n        <div class=\"item-source\">".concat(article.source.name, "</div> \n        <div class=\"item-date\">").concat(new Date(article.publishedAt).toLocaleString(), "</div> \n        <header>\n          <h1><a class=\"item-title\" target=\"_blank\" href=\"").concat(article.url, "\">").concat(article.title, "</a></h1>\n        </header>        \n        <p>").concat(article.description ? article.description : 'Unfortunately, description of news.js not provided.', "</p>\n        <img src=\"").concat(article.urlToImage, "\" alt=\"").concat(article.title, "\">\n      ");
+      dataItemEl.innerHTML = "\n        <div class=\"item-source\">".concat(article.source.name, "</div> \n        <div class=\"item-date\">").concat(new Date(article.publishedAt).toLocaleString(), "</div> \n        <header>\n          <h1><a class=\"item-title\" target=\"_blank\" href=\"").concat(article.url, "\">").concat(article.title, "</a></h1>\n        </header>        \n        <p>").concat(article.description ? article.description : 'Unfortunately, description of news not provided.', "</p>\n        <img src=\"").concat(article.urlToImage, "\" alt=\"").concat(article.title, "\">\n      ");
       fragment.appendChild(dataItemEl);
     });
     container.appendChild(fragment);
