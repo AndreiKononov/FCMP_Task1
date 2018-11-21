@@ -14,6 +14,7 @@ class News {
         .then((response) => {
           setTimeout(() => resolve(response.json()), 1000);
         })
+        .catch(error => reject(error.message))
     });
   }
 
