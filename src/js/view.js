@@ -7,7 +7,7 @@ class News {
   getUrl(country) {
     return `${this.HOST_URL}${this.SOURCES_PARAM}?country=${country}&apiKey=${this.API_KEY}`
   }
-  getData(country = 'ru') {
+  getData(country = defaultLanguage) {
     return new Promise((resolve, reject) => {
       const url = this.getUrl(country);
       return fetch(url)
@@ -17,14 +17,4 @@ class News {
         .catch(error => reject(error.message))
     });
   }
-
-  // async getData(country = 'ru') {
-  //   const url = this.getUrl(country);
-  //   const request = new Request(url);
-  //   return await fetch(request)
-  //     .then((response) => {
-  //       setTimeout( () => response.json(), 1000);
-  //     })
-  // }
-
 }

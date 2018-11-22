@@ -4,3 +4,4 @@ const SOURCES_PARAM = 'top-headlines';
 const loader = document.getElementById("loader");
 const container = document.getElementById('container');
 const fragment = document.createDocumentFragment();
+const defaultLanguage = 'ru';
