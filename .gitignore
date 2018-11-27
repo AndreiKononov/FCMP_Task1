@@ -3,9 +3,8 @@ logs/*
 node_modules/
 bower_components/
 tmp
+dist/
 .DS_Store
 .idea
 .build
-!dist/index.html
-dist/
 npm-debug.log
