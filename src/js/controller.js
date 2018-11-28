@@ -1,3 +1,5 @@
+import { fragment, container, loader} from "./constants";
+
 const articlesList = (data) => {
   loader.classList.add('hidden');
   const {articles = []} = data;
@@ -20,3 +22,4 @@ const articlesList = (data) => {
   });
   container.appendChild(fragment);
 };
+export {articlesList};

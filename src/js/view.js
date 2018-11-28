@@ -1,3 +1,5 @@
+import { defaultLanguage } from "./constants";
+
 class News {
   constructor(API_KEY, HOST_URL, SOURCES_PARAM) {
     this.API_KEY = API_KEY;
@@ -18,3 +20,5 @@ class News {
     });
   }
 }
+
+export {News};
