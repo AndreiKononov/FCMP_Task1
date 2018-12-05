@@ -1,4 +1,5 @@
 import { fragment, container, loader} from "./constants";
+import '../img/news.jpg';
 
 const articlesList = (data) => {
   loader.classList.add('hidden');
