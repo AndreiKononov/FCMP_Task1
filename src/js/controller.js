@@ -1,3 +1,6 @@
+import { fragment, container, loader} from "./constants";
+import '../img/news.jpg';
+
 const articlesList = (data) => {
   loader.classList.add('hidden');
   const {articles = []} = data;
@@ -20,3 +23,4 @@ const articlesList = (data) => {
   });
   container.appendChild(fragment);
 };
+export {articlesList};

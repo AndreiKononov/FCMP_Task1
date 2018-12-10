@@ -5,3 +5,13 @@ const loader = document.getElementById("loader");
 const container = document.getElementById('container');
 const fragment = document.createDocumentFragment();
 const defaultLanguage = 'ru';
+
+export {
+  API_KEY,
+  HOST_URL,
+  SOURCES_PARAM,
+  loader,
+  container,
+  fragment,
+  defaultLanguage
+};
