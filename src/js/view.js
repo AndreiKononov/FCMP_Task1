@@ -1,6 +1,6 @@
 import { defaultLanguage } from "./constants";
 
-class News {
+export class News {
   constructor(API_KEY, HOST_URL, SOURCES_PARAM) {
     this.API_KEY = API_KEY;
     this.HOST_URL = HOST_URL;
@@ -20,5 +20,3 @@ class News {
     });
   }
 }
-
-export {News};
