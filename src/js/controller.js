@@ -1,19 +1,30 @@
-import { fragment, container, loader} from "./constants";
-import { articleTemplate } from "./template";
+const fragment = document.createDocumentFragment();
 
-export const  CONTROLLER = (function () {
-  const showArticle = function (data) {
-    loader.classList.add('hidden');
-    const {articles = []} = data;
-    articles.forEach(article => {
-      let dataItemEl = document.createElement('article');
-      dataItemEl.className = 'item';
-      dataItemEl.innerHTML = articleTemplate(article);
-      fragment.appendChild(dataItemEl);
-    });
-    container.appendChild(fragment);
-  };
-  return {
-    showArticle: showArticle
-  }
-})();
+const getHTML = (data) => {
+    if (!data) {
+      return;
+    }
+  const {articles = []} = data;
+  articles.map(item => {
+    if (!item.urlToImage) {
+      item.urlToImage = `./src/img/news.jpg`;
+    }
+    let dataItemElement = document.createElement('article');
+    dataItemElement.className = 'item';
+    dataItemElement.innerHTML = `
+      <div class="item-source">${item.source.name}</div>
+      <div class="item-date">${new Date(item.publishedAt).toLocaleString()}</div>
+      <header>
+        <h1><a class="item-title" target="_blank" href="${item.url}">${item.title}</a></h1>
+      </header>
+      <p>${item.description ? item.description : 'Unfortunately, description of news not provided.'}</p>
+      <img src="${item.urlToImage}" alt="${item.title}">
+    `;
+    fragment.appendChild(dataItemElement);
+  });
+  return fragment;
+};
+
+export const CONTROLLER = (() => ({
+  getHTML
+}))();
