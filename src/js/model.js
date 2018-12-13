@@ -1,4 +1,4 @@
-import { defaultLanguage } from "./constants";
+import { defaultLanguage, MESSAGE } from "./constants";
 
 export class NewsModel {
   constructor(API_KEY, HOST_URL, SOURCES_PARAM) {
@@ -16,7 +16,7 @@ export class NewsModel {
         .then((response) => {
           setTimeout(() => resolve(response.json()), 1000);
         })
-        .catch(error => reject(error.message))
+        .catch(error => reject(MESSAGE.display(error.message)));
     });
   }
 }
