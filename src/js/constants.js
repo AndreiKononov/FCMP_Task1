@@ -1,4 +1,4 @@
-import { showPopUp } from "./singleton";
+import { showPopUp } from "./errorHandler";
 
 const API_KEY = 'e9979803c3894fa182b399c482279297';
 const HOST_URL = 'https://newsapi.org/v2/';
