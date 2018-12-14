@@ -4,7 +4,7 @@ class Renderer {
     return element ? (element.appendChild(content)) : null;
   }
 
-  loaderIsHidden(element) {
+  elementIsHidden(element) {
     return element.classList.add('hidden');
   }
 }

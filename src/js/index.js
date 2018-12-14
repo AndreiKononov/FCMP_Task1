@@ -1,6 +1,10 @@
+import { appView } from "./constants";
+import '../index.html';
 import '../scss/main.scss';
-import '../scss/loader.scss';
-import { App } from './app';
 
-const app = new App();
-app.init();
+const button = document.getElementById('showNews');
+
+button.onclick = e => import('./news.js')
+  .then(() => {
+    appView.elementIsHidden(button);
+  });
