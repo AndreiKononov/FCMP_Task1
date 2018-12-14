@@ -1,26 +1,32 @@
-import { fragment, container, loader} from "./constants";
-import '../img/news.jpg';
+import { LoggerDecorator, articleFactory } from "./utils";
 
-const articlesList = (data) => {
-  loader.classList.add('hidden');
+const fragment = document.createDocumentFragment();
+
+const getHTML = (data) => {
+  if (!data) {
+    return;
+  }
   const {articles = []} = data;
-  articles.forEach(article => {
-    if (!article.urlToImage) {
-      article.urlToImage = `./src/img/news.jpg`;
+  articles.map(item => {
+    if (!item.urlToImage) {
+      item.urlToImage = `./src/img/news.jpg`;
     }
-    let dataItemEl = document.createElement('article');
-    dataItemEl.className = 'item';
-      dataItemEl.innerHTML = `
-      <div class="item-source">${article.source.name}</div>
-      <div class="item-date">${new Date(article.publishedAt).toLocaleString()}</div>
+    let articleFactoryWithLogger = new LoggerDecorator(articleFactory);
+    const dataItemElement = articleFactoryWithLogger.create({ class: 'item' });
+    dataItemElement.innerHTML = `
+      <div class="item-source">${item.source.name}</div>
+      <div class="item-date">${new Date(item.publishedAt).toLocaleString()}</div>
       <header>
-        <h1><a class="item-title" target="_blank" href="${article.url}">${article.title}</a></h1>
+        <h1><a class="item-title" target="_blank" href="${item.url}">${item.title}</a></h1>
       </header>
-      <p>${article.description ? article.description : 'Unfortunately, description of news not provided.'}</p>
-      <img src="${article.urlToImage}" alt="${article.title}">
+      <p>${item.description ? item.description : 'Unfortunately, description of news not provided.'}</p>
+      <img src="${item.urlToImage}" alt="${item.title}">
     `;
-    fragment.appendChild(dataItemEl);
+    fragment.appendChild(dataItemElement);
   });
-  container.appendChild(fragment);
+  return fragment;
 };
-export {articlesList};
+
+export const CONTROLLER = (() => ({
+  getHTML
+}))();
