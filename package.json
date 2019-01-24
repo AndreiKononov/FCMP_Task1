@@ -1,18 +1,16 @@
 {
   "name": "frontcamp",
   "version": "1.0.0",
-  "description": "Task 1: ES6 Features",
-  "main": "index.js",
+  "description": "Task_7: express-app",
   "scripts": {
-    "dev": "webpack --mode development --colors --progress",
-    "build": "webpack --mode production --colors --progress",
-    "watch": "webpack --mode development --watch",
-    "start": "webpack-dev-server --mode development --colors --progress --open"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AndreiKononov/FrontCamp.git"
   },
+  "keywords": [],
   "author": "Andrei Kononov",
   "license": "ISC",
   "bugs": {
@@ -20,35 +18,10 @@
   },
   "homepage": "https://github.com/AndreiKononov/FrontCamp#readme",
   "devDependencies": {
-    "@babel/cli": "7.1.5",
-    "@babel/core": "7.1.6",
-    "@babel/plugin-transform-async-to-generator": "7.1.0",
-    "@babel/plugin-transform-runtime": "7.1.0",
-    "@babel/preset-env": "7.1.6",
-    "@babel/runtime": "7.1.5",
-    "autoprefixer": "9.4.0",
-    "babel-loader": "8.0.4",
-    "css-loader": "1.0.1",
-    "cssnano": "4.1.7",
-    "es6-promise": "4.2.5",
-    "file-loader": "2.0.0",
-    "html-loader": "0.5.5",
-    "html-webpack-plugin": "3.2.0",
-    "image-webpack-loader": "4.6.0",
-    "mini-css-extract-plugin": "0.4.5",
-    "node-sass": "4.10.0",
-    "postcss-loader": "3.0.0",
-    "sass-loader": "7.1.0",
-    "style-loader": "0.23.1",
-    "uglifyjs-webpack-plugin": "2.0.1",
-    "url-loader": "1.1.2",
-    "webpack": "4.26.1",
-    "webpack-cli": "3.1.2",
-    "webpack-dev-server": "^3.1.10",
-    "yargs": "12.0.5"
+    "morgan": "1.9.1",
+    "nodemon": "1.18.9"
   },
   "dependencies": {
-    "babel-polyfill": "6.26.0",
-    "isomorphic-fetch": "2.2.1"
+    "express": "4.16.4"
   }
 }
