@@ -1,1 +1,5 @@
-To see news click here https://andreikononov.github.io/FrontCamp/
+##NodeJS Express simple app
+#Getting started
+npm start
+
+npm run dev
