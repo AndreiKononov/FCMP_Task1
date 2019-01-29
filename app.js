@@ -1,12 +1,12 @@
 const express = require('express');
-
 const app = express();
 
 app.use(express.static(__dirname + '/public'));
 
 app.use((err, req, res) => {
-    res.status(500);
-    res.render('error', { error: err });
+    console.error(err);
+    res.status(500)
+        .render('error', { error: err });
 });
 
 let port = +(process.env.PORT || 4000);
