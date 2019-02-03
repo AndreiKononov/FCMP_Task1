@@ -1,6 +1,6 @@
 logs/*
 !.gitkeep
-node_modules/
+myapp/node_modules/
 bower_components/
 tmp
 dist/
