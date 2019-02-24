@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'angular-app';
+  private titleService: Title;
+
+  public loggedUser: string = 'User1';
+
+  constructor(titleService: Title) {
+    this.titleService = titleService;
+  }
+
+  public logOut(): void {
+    console.log('Log out');
+  }
 }
