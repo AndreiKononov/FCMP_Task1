@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from "@angular/common/http";
 
 import "angular2-navigate-with-data";
 
@@ -9,12 +10,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NewsPageModule } from './news-feed';
 import { EditArticleModule } from './edit-article';
-import { NewsItemComponent } from './news-item';
+import { NewsItemModule} from "./news-item/index";
+import { NewsService } from "./services/index";
 
 @NgModule({
   declarations: [
     AppComponent,
-    NewsItemComponent
   ],
   imports: [
     BrowserModule,
@@ -22,9 +23,11 @@ import { NewsItemComponent } from './news-item';
     BrowserAnimationsModule,
     MatButtonModule,
     NewsPageModule,
+    NewsItemModule,
     EditArticleModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [NewsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

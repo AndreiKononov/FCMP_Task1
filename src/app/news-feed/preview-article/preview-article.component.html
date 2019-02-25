@@ -4,12 +4,12 @@
   <div class="article-content">
     <div class="title">
       <h4>{{ articleData.title }}</h4>
-      <span>Date: {{articleData.publishedAt}}</span>
+      <span>Date: {{ articleData.publishedAt | formatDate }}</span>
     </div>
 
     <div *ngIf="articleData.content" class="content">{{ articleData.content }}</div>
 
-    <a href="news/{{articleId}}">Read more...</a>
+    <button link-button mat-icon-button type="button" (click)="readMore()">Read more...</button>
   </div>
 
   <div *ngIf="isOwnArticle" class="article-manage">

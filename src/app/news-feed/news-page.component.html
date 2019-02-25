@@ -3,7 +3,6 @@
   (sourceSelectionEvent)="setNewSource($event)"
   (ownNewsCheckEvent)="setOwnSource($event)"
   (filterEvent)="setFilter($event)"
-  (loadMoreEvent)="setNewLimit()"
 ></app-news-feed>
 
 <div class="news-container">
@@ -13,5 +12,5 @@
     [isOwnArticle]="onlyOwnNews"
     [articleId]="(selectedSourceId ? selectedSourceId : 'own-news') + '--' + i"
   ></app-preview-article>
-  <button *ngIf="!!articlesToDisplay" mat-raised-button color="primary" (click)="setNewLimit()">Load more</button>
+  <button *ngIf="articlesToDisplay.length > 0" mat-raised-button color="primary" (click)="setNewLimit()">Load more</button>
 </div>

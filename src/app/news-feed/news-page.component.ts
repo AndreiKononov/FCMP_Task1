@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from "@angular/platform-browser";
 
-import { mockedArticles, mockedSources } from '../mockups';
-import { SourceModel } from '../models';
+import { SourceModel} from '../models';
+import { NewsService } from "../services/index";
 
 @Component({
   selector: 'app-news-page',
@@ -11,7 +11,8 @@ import { SourceModel } from '../models';
 })
 export class NewsPageComponent implements OnInit {
   private titleService: Title;
-  private articles: any;
+  private newsService: NewsService;
+  private articles: any[] = [];
   private newsLimit: number = 5;
   private onlyOwnNews: boolean = false;
   private filter: string;
@@ -21,33 +22,53 @@ export class NewsPageComponent implements OnInit {
   public selectedSourceId: string;
 
   public get articlesToDisplay(): any {
-    if (!this.selectedSourceId && !this.onlyOwnNews) {
-      return;
-    }
-
-    const tempArticles: any = (this.onlyOwnNews)
-      ? this.articles["own-news"].slice(0, this.newsLimit)
-      : this.articles[this.selectedSourceId].slice(0, this.newsLimit);
-
     if (this.filter) {
-      return tempArticles.filter((article) =>
+      return this.articles.filter((article) =>
         (article.title + article.content).toLowerCase().includes(this.filter));
     } else {
-      return tempArticles;
+      return this.articles;
     }
   }
 
-  constructor(titleService: Title) {
+  constructor(titleService: Title, newsService: NewsService) {
     this.titleService = titleService;
-    this.sources = mockedSources;
-    this.articles = mockedArticles;
+    this.newsService = newsService;
   }
 
   public ngOnInit(): void {
     this.titleService.setTitle("Breaking News");
+    this.newsService.fetchChannels().subscribe((sources: SourceModel[]) => {
+      this.sources = sources;
+    });
   }
 
-  public checkTitle(): void {
+  public setNewSource(id: string) {
+    this.selectedSourceId = id;
+    this.checkTitle();
+    this.getNews();
+  }
+
+  public setOwnSource(approval: boolean) {
+    this.onlyOwnNews = approval;
+    this.checkTitle();
+  }
+
+  public setNewLimit(): void {
+    this.newsLimit += 5;
+    this.getNews();
+  }
+
+  public setFilter(newFilter: string): void {
+    this.filter = newFilter;
+  }
+
+  private getNews(): void {
+    this.newsService.fetchNews(this.selectedSourceId, this.newsLimit).subscribe((news: any) => {
+      this.articles = news;
+    });
+  }
+
+  private checkTitle(): void {
     this.newsLimit = 5;
 
     if (this.selectedSourceId && !this.onlyOwnNews) {
@@ -58,23 +79,5 @@ export class NewsPageComponent implements OnInit {
     } else {
       this.titleService.setTitle("Breaking News");
     }
-  }
-
-  public setNewSource(id: string) {
-    this.selectedSourceId = id;
-    this.checkTitle();
-  }
-
-  public setOwnSource(approval: boolean) {
-    this.onlyOwnNews = approval;
-    this.checkTitle();
-  }
-
-  public setNewLimit(): void {
-    this.newsLimit += 5;
-  }
-
-  public setFilter(newFilter: string): void {
-    this.filter = newFilter;
   }
 }

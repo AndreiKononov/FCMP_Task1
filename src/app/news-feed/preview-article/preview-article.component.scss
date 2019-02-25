@@ -29,6 +29,10 @@ article {
         flex: 1;
       }
     }
+
+    button[link-button] {
+      color: blue;
+    }
   }
 
   .article-manage {

@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { EditArticleComponent } from './edit-article.component';
+import { SharedModule } from "../shared/index";
 
 @NgModule({
   declarations: [
@@ -10,11 +9,7 @@ import { EditArticleComponent } from './edit-article.component';
   ],
   exports: [EditArticleComponent],
   imports: [
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    FormsModule,
+    SharedModule
   ],
 })
 export class EditArticleModule {
