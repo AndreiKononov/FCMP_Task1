@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<mat-form-field>
+  <mat-select
+    placeholder="Choose a news source..."
+    (valueChange)="selectSource($event)"
+    [disabled]="onlyOwnNews">
+    <mat-option *ngFor='let source of sources' value="{{source.id}}">{{source.name}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput (keyup)="setFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<mat-checkbox (change)="setOwnSource($event.checked)">Only created by me</mat-checkbox>
+
+<button mat-raised-button color="primary" (click)="createNewArticle()">Add Article</button>

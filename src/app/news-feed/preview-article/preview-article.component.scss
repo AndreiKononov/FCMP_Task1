@@ -1,0 +1,43 @@
+article {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border: solid 0.1rem #a3a3a3;
+  padding: 2rem;
+
+  img {
+    height: auto;
+    width: 10rem;
+    border-radius: 0.5rem;
+    margin-right: 1rem;
+  }
+
+  .article-content{
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+    margin-right: 1rem;
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+
+      h4 {
+        margin-top: 0;
+        font-size: 1.6rem;
+        margin-bottom: 1.4rem;
+        flex: 1;
+      }
+    }
+  }
+
+  .article-manage {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      width: 8rem;
+      margin-bottom: 1rem;
+    }
+  }
+}

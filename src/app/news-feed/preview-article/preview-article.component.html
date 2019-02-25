@@ -1,5 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+<article>
+  <img *ngIf="articleData.urlToImage" src="{{ articleData.urlToImage }}">
+
+  <div class="article-content">
+    <div class="title">
+      <h4>{{ articleData.title }}</h4>
+      <span>Date: {{articleData.publishedAt}}</span>
+    </div>
+
+    <div *ngIf="articleData.content" class="content">{{ articleData.content }}</div>
+
+    <a href="news/{{articleId}}">Read more...</a>
+  </div>
+
+  <div *ngIf="isOwnArticle" class="article-manage">
+    <button mat-raised-button color="primary" (click)="editArticle()">Edit</button>
+    <button mat-raised-button color="primary" (click)="deleteArticle()">Delete</button>
+  </div>
+</article><html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
