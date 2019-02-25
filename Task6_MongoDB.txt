@@ -99,38 +99,44 @@ Result: { "_id" : "Latvia", "carriers" : [ "Uzbekistan Airways", "Blue Jet SP Z 
    Greece, Italy or Spain? Find top 10 carriers, but provide the last 7 carriers (do not include the
    first 3). Show result as { "_id" : "<carrier>", "total" : 999}
 
-Query:   db.airlines.aggregate([
+Query:   db.airlines.aggregate(
+  [
     {
-        $match: {
-            originCountry: "United States"
+      $match: {
+        originCountry: 'United States',
+        destCountry: {
+          $in: ['Greece', 'Italy', 'Spain']
+        },
+        passengers: {
+          $gt: 0
         }
+      }
     },
     {
-        $group: {
-            _id: "$carrier",
-            total: {$sum: "$passengers"}
+      $group: {
+        _id: '$carrier',
+        totalPassengers: {
+          $sum: '$passengers'
         }
+      }
     },
     {
-        $sort: {
-            total: -1
-        }
+      $sort: {
+        totalPassengers: -1
+      }
     },
-    {
-        $skip: 3
-    },
-    {
-        $limit: 7
-    }
-])
+    { $limit: 10 },
+    { $skip: 3 }
+  ]
+)
 
-Result:  { "_id" : "United Air Lines Inc.", "total" : 54029502 }
-	{ "_id" : "JetBlue Airways", "total" : 21433163 }
-	{ "_id" : "SkyWest Airlines Inc.", "total" : 19482179 }
-	{ "_id" : "Alaska Airlines Inc.", "total" : 14600696 }
-	{ "_id" : "Spirit Air Lines", "total" : 13268045 }
-	{ "_id" : "ExpressJet Airlines Inc.", "total" : 9619104 }
-	{ "_id" : "Frontier Airlines Inc.", "total" : 9214843 }
+Result: { "_id" : "Compagnia Aerea Italiana", "totalPassengers" : 280256 }
+	{ "_id" : "United Air Lines Inc.", "totalPassengers" : 229936 }
+	{ "_id" : "Emirates", "totalPassengers" : 100903 }
+	{ "_id" : "Air Europa", "totalPassengers" : 94968 }
+	{ "_id" : "Meridiana S.p.A", "totalPassengers" : 20308 }
+	{ "_id" : "Norwegian Air Shuttle ASA", "totalPassengers" : 13344 }
+	{ "_id" : "VistaJet Limited", "totalPassengers" : 183 }
 
 ---------------------------------------------------------------------------
 5. Find the city (originCity) with the highest sum of passengers for each state (originState)
