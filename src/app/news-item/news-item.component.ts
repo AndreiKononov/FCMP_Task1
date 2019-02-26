@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { Title } from "@angular/platform-browser";
 
-import { mockedArticles, articleMock } from "../mockups";
+import { articleMock } from "../mockups";
 
 @Component({
   selector: 'app-news-item',
   templateUrl: './news-item.component.html',
   styleUrls: ['./news-item.component.scss']
 })
-export class NewsItemComponent implements OnInit {
+export class NewsItemComponent {
   private route: ActivatedRoute;
   private router: Router;
   private id: string;
@@ -29,14 +29,11 @@ export class NewsItemComponent implements OnInit {
     const index: number = id.indexOf("--");
     this.sourceId = id.slice(0, index);
     this.id = id.slice(index + 2);
-    this.articleData = mockedArticles[this.sourceId][this.id];
+
+    this.articleData = this.router.getNavigatedData() || {};
 
     this.isOwnArticle = this.sourceId === "own-news";
     titleService.setTitle(this.isOwnArticle ? "My own news" : this.articleData.source.name);
-  }
-
-  ngOnInit(): void {
-
   }
 
   public editArticle(): void {

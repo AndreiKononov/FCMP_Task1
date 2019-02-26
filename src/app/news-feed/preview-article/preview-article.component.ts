@@ -26,4 +26,8 @@ export class PreviewArticleComponent {
   public deleteArticle(): void {
     console.log("delete");
   }
+
+  public readMore(): void {
+    this.router.navigateByData({url: [`/news/${this.articleId}`], data: this.articleData});
+  }
 }

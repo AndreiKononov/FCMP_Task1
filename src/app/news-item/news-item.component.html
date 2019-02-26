@@ -8,7 +8,7 @@
 
   <div class="original-link">
     <a href="{{ articleData.url }}">{{ articleData.author || "link" }}</a>
-    <span>Date: {{articleData.publishedAt}}</span>
+    <span>Date: {{ articleData.publishedAt | formatDate }}</span>
   </div>
 
   <div *ngIf="isOwnArticle" class="article-manage">
