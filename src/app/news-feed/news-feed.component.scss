@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  mat-select {
+    flex: 0 1 15rem;
+  }
+
+  input[matInput] {
+    max-width: 15rem;
+  }
+
+  *:first-child {
+    margin-left: 2rem;
+  }
+
+  *:last-child {
+    margin-right: 2rem;
+  }
+}

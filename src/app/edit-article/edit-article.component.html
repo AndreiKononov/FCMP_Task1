@@ -1,0 +1,39 @@
+<form [formGroup]="form">
+  <div class="column">
+    <mat-form-field>
+      <input matInput placeholder="Heading" formControlName="heading">
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder="Short description" formControlName="description" matTextareaAutosize
+                matAutosizeMaxRows=5></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea matInput placeholder="Content" formControlName="content" matTextareaAutosize
+                matAutosizeMaxRows=15></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="column">
+    <mat-form-field>
+      <input matInput placeholder="Image" formControlName="image">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Date" formControlName="date">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Author" formControlName="author">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Source URL" formControlName="url">
+    </mat-form-field>
+    <div class="form-manage">
+      <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="onSave()">Save</button>
+      <button mat-raised-button color="primary" (click)="onCancel()">Cancel</button>
+    </div>
+  </div>
+</form>
