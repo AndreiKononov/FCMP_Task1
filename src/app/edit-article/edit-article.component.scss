@@ -1,0 +1,25 @@
+:host {
+  width: 100%;
+}
+
+form {
+  display: flex;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding-right: 2rem;
+}
+
+.form-manage {
+  display: flex;
+
+  button {
+    width: 8rem;
+    margin-right: 2rem;
+  }
+}
