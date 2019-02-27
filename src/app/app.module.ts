@@ -10,8 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NewsPageModule } from './news-feed';
 import { EditArticleModule } from './edit-article';
-import { NewsItemModule} from "./news-item/index";
-import { NewsService } from "./services/index";
+import { NewsItemModule} from "./news-item";
+import { NewsService } from "./services";
 
 @NgModule({
   declarations: [

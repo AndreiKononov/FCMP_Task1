@@ -1,8 +1,14 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { By, Title } from "@angular/platform-browser";
+import { DebugElement } from "@angular/core";
+
 import { AppComponent } from './app.component';
 
-describe('AppComponent', () => {
+describe('AppComponent:', () => {
+  let fixture: ComponentFixture<AppComponent>;
+  let component: AppComponent;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -11,25 +17,30 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      providers: [{ provide: Title, useValue: { getTitle: () => "Test App"} }]
     }).compileComponents();
   }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'angular-app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('angular-app');
-  });
-
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  it('should create the app', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should render title in a h2 tag', () => {
+
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to angular-app!');
+    expect(compiled.querySelector('h2').textContent).toContain('Test App');
+  });
+
+  it('should render title in a h2 tag', () => {
+    spyOn(component, "logOut").and.callThrough();
+    const logoutButton: DebugElement = fixture.debugElement.query(By.css('button'));
+    logoutButton.triggerEventHandler("click", {});
+    expect(component.logOut).toHaveBeenCalled();
   });
 });

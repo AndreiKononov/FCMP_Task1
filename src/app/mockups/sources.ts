@@ -1,4 +1,4 @@
-import { SourceModel } from '../models/index';
+import { SourceModel } from '../models';
 
 export let mockedSources: SourceModel[] = [{
   id: 'al-jazeera-english',

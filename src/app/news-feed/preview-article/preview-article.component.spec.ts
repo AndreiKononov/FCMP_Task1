@@ -1,20 +1,27 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { PreviewArticleComponent } from './preview-article.component';
+import { Router } from "@angular/router";
+import { Component } from "@angular/core";
+import { By } from "@angular/platform-browser";
 
-describe('PreviewArticleComponent', () => {
+import { PreviewArticleComponent } from './preview-article.component';
+import { SharedModule } from "../../shared";
+
+describe('PreviewArticleComponent:', () => {
   let component: PreviewArticleComponent;
-  let fixture: ComponentFixture<PreviewArticleComponent>;
+  let fixture: ComponentFixture<TestComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PreviewArticleComponent]
+      imports: [SharedModule],
+      declarations: [PreviewArticleComponent, TestComponent],
+      providers: [{ provide: Router, useValue: {}}]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PreviewArticleComponent);
-    component = fixture.componentInstance;
+    fixture = TestBed.createComponent(TestComponent);
+    component = fixture.debugElement.query(By.directive(PreviewArticleComponent)).componentInstance;
     fixture.detectChanges();
   });
 
@@ -22,3 +29,17 @@ describe('PreviewArticleComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+@Component({
+  template: `
+        <app-preview-article
+          [articleData]="{}"
+          [articleId]="'42'"
+          [isOwnArticle]="false"
+        >
+        </app-preview-article>
+    `
+})
+class TestComponent {
+
+}
